@@ -2,7 +2,7 @@ name: BigSeller Daily Report
 
 on:
   schedule:
-    - cron: '30 0 * * *'
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
