@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import os
 from datetime import datetime
@@ -25,7 +26,6 @@ def get_order_count():
                 'pickup': status_map.get('pickup', 0),
                 'shipped': status_map.get('shipped', 0),
                 'unpaid': status_map.get('unpaid', 0),
-                'processing': status_map.get('processing', 0),
             }
     except Exception as e:
         print(f"Error: {e}")
@@ -47,16 +47,15 @@ def main():
 
     if counts:
         msg = (
-            f"<b>BAO CAO DON HANG BIGSELLER</b>\n"
-            f"Ngay {now}\n\n"
-            f"<b>CHO XU LY:</b> {counts['new']} don\n"
-            f"<b>CHO LAY HANG:</b> {counts['pickup']} don\n"
-            f"<b>DANG GIAO HANG:</b> {counts['shipped']} don\n"
-            f"<b>CHUA THANH TOAN:</b> {counts['unpaid']} don\n"
-            f"<b>DANG XU LY:</b> {counts['processing']} don"
+            f"\U0001F4CA <b>BAO CAO DON HANG BIGSELLER</b>\n"
+            f"\U000023F0 {now} (gio Viet Nam)\n\n"
+            f"\U000023F3 <b>Cho xu ly:</b> {counts['new']} don\n"
+            f"\U0001F4E6 <b>Cho lay hang:</b> {counts['pickup']} don\n"
+            f"\U0001F69A <b>Dang giao hang:</b> {counts['shipped']} don\n"
+            f"\U0001F4B3 <b>Chua thanh toan:</b> {counts['unpaid']} don"
         )
     else:
-        msg = f"Khong lay duoc du lieu BigSeller luc {now}. Vui long cap nhat cookie."
+        msg = f"\u26A0\uFE0F Khong lay duoc du lieu BigSeller luc {now}.\nVui long cap nhat lai cookie."
 
     send_telegram(msg)
     print(msg)
